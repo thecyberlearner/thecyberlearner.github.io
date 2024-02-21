@@ -1,0 +1,32 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Peter Wambua&#39;s blog for robots :|</title>
+        <link>https://thecyberlearner.github.io/posts/</link>
+        <description>Recent content in Posts on Peter Wambua&#39;s blog for robots :|</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+        <lastBuildDate>Wed, 21 Feb 2024 09:29:08 -0500</lastBuildDate>
+        <atom:link href="https://thecyberlearner.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Hack Wireless Networks</title>
+            <link>https://thecyberlearner.github.io/posts/hack-wireless-networks/</link>
+            <pubDate>Wed, 21 Feb 2024 09:29:08 -0500</pubDate>
+            
+            <guid>https://thecyberlearner.github.io/posts/hack-wireless-networks/</guid>
+            <description>maybe some code?
+from django.shortcuts import render import pdfkit, requests, logging # Create your views here. def index(request): #logger.info(&amp;#39;index page&amp;#39;) return render(request, &amp;#39;home.html&amp;#39;) </description>
+            <content type="html"><![CDATA[<p>maybe some code?</p>
+<pre tabindex="0"><code>from django.shortcuts import render
+import pdfkit, requests, logging
+
+# Create your views here.
+def index(request):
+    #logger.info(&#39;index page&#39;)
+    return render(request, &#39;home.html&#39;)
+</code></pre>]]></content>
+        </item>
+        
+    </channel>
+</rss>
