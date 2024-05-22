@@ -3,5 +3,15 @@ languageCode = "en-us"
 title = "thecyberlearner's blog"
 theme = "github-style"
 
+[author]
+  name = "Peter Wambua"
+  homepage = "https://github.com/wambuapeter/"
+
 [params]
 	avatar = "/images/profile.png"
+	url = "https://wambuapeter.github.io"
+	twitter = "th3cyberlearner"
+	linkedin = "peter-wambua"
+	github = "wambuapeter"
+
+
