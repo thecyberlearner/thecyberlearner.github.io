@@ -1,0 +1,4 @@
+baseURL = "https://thecyberlearner.github.io"
+languageCode = "en-us"
+title = "thecyberlearner's blog"
+theme = "github-style"
