@@ -1,6 +1,6 @@
 baseURL = "https://thecyberlearner.github.io"
 languageCode = "en-us"
-title = "thecyberlearner's blog"
+title = "Peter Wambua's blog"
 theme = "github-style"
 
 [author]
