@@ -56,4 +56,4 @@ Hence the name is SharpHound
 > The trickiest one that made me hit so many dead ends. Though, after going through 'Windows Firewall-Firewall.evtx' logs, a log with id 2006 stated that 'A rule has been deleted in the Windows Defender Firewall exception list'. This is it
 ![](/images/logjammerruledeleted.PNG)
 
-			*FUN CHALLENGE NGL*
+*FUN CHALLENGE NGL*
