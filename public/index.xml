@@ -15,5 +15,12 @@
       <guid>http://localhost:1313/post/logjammer/</guid>
       <description>This challenge is part of the Sherlocks HackTheBox challenges which are mainly focused on improving your defensive skills.</description>
     </item>
+    <item>
+      <title>Wireless Pentesting with AIRCRACK-NG</title>
+      <link>http://localhost:1313/post/wirelesspentesting/</link>
+      <pubDate>Thu, 06 Oct 2022 02:11:40 -0400</pubDate>
+      <guid>http://localhost:1313/post/wirelesspentesting/</guid>
+      <description>Perfoming Wireless Penetration Testing with AIRCRACK-NG This is a walkthrough of how to crack WPA/WPA2 WiFi router password in some minutes. Note this is only for educational purposes, hence do not attack a network that isn’t yours or one without permission to.&#xA;Just being a campus student, I really don’t have an external wireless adapter but it is crucial as it gives you a faster, more reliable connection to your available network signals through the USB port instead.</description>
+    </item>
   </channel>
 </rss>
