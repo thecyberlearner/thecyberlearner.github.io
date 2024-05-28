@@ -1,5 +1,5 @@
 +++
-title = 'Logjammer'
+title = 'Logjammer Sherlocks Walkthrough'
 date = 2024-05-25T01:12:56-04:00
 summary = 'This challenge is part of the Sherlocks HackTheBox challenges which are mainly focused on improving your defensive skills.'
 +++

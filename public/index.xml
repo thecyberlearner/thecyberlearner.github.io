@@ -9,11 +9,18 @@
     <lastBuildDate>Sat, 25 May 2024 01:12:56 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Logjammer</title>
+      <title>Logjammer Sherlocks Walkthrough</title>
       <link>http://localhost:1313/post/logjammer/</link>
       <pubDate>Sat, 25 May 2024 01:12:56 -0400</pubDate>
       <guid>http://localhost:1313/post/logjammer/</guid>
       <description>This challenge is part of the Sherlocks HackTheBox challenges which are mainly focused on improving your defensive skills.</description>
+    </item>
+    <item>
+      <title>Kioptrix Level 1 Walkthrough</title>
+      <link>http://localhost:1313/post/kioptrix/</link>
+      <pubDate>Thu, 20 Oct 2022 03:21:26 -0400</pubDate>
+      <guid>http://localhost:1313/post/kioptrix/</guid>
+      <description>Kioptrix is usually the starting point of all penetration testers, the first box we pawn. Here is a walkthrough of how I rooted my kioptrix box.</description>
     </item>
     <item>
       <title>Wireless Pentesting with AIRCRACK-NG</title>
