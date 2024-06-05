@@ -6,8 +6,15 @@
     <description>Recent content on Peter Wambua&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 May 2024 01:12:56 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 05 Jun 2024 16:47:16 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Daystar Hackathon CTF</title>
+      <link>http://localhost:1313/post/daystar-hackathon-ctf/</link>
+      <pubDate>Wed, 05 Jun 2024 16:47:16 -0400</pubDate>
+      <guid>http://localhost:1313/post/daystar-hackathon-ctf/</guid>
+      <description>Daystar Hackathon CTF writeups My team CyberKimathi participated in the hackathon held at Daystar University. Being just a 2 hrs CTF and to be determined by time, we solved a couple of challenges, toping the competition. Here is a writeup of some:&#xA;Challenge 1: Threat Intelligence&#xA;A Malicious actor has been using the IP 64.176.194.7 to spread malware, can you identify the filename to the Powershell script used in the malicious activity.</description>
+    </item>
     <item>
       <title>Logjammer Sherlocks Walkthrough</title>
       <link>http://localhost:1313/post/logjammer/</link>

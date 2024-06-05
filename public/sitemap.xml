@@ -2,14 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/post/daystar-hackathon-ctf/</loc>
+    <lastmod>2024-06-05T16:47:16-04:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2024-06-05T16:47:16-04:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2024-06-05T16:47:16-04:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/post/logjammer/</loc>
     <lastmod>2024-05-25T01:12:56-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-05-25T01:12:56-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2024-05-25T01:12:56-04:00</lastmod>
+    <loc>http://localhost:1313/post/kioptrix/</loc>
+    <lastmod>2022-10-20T03:21:26-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/wirelesspentesting/</loc>
     <lastmod>2022-10-06T02:11:40-04:00</lastmod>
