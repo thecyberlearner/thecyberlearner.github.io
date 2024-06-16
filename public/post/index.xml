@@ -23,6 +23,13 @@
       <description>This challenge is part of the Sherlocks HackTheBox challenges which are mainly focused on improving your defensive skills.</description>
     </item>
     <item>
+      <title>A SOC Odyssey - Windows Event IDs</title>
+      <link>http://localhost:1313/post/windows-event-ids/</link>
+      <pubDate>Sat, 16 Mar 2024 05:38:22 -0400</pubDate>
+      <guid>http://localhost:1313/post/windows-event-ids/</guid>
+      <description>A module from CTFROOM focusing on Windows Event IDs, and aiming to test your understanding of Windows Event IDs and their use in incident response.</description>
+    </item>
+    <item>
       <title>My First Pentest Report</title>
       <link>http://localhost:1313/post/my-first-pentest-report/</link>
       <pubDate>Mon, 06 Mar 2023 01:29:45 -0400</pubDate>
