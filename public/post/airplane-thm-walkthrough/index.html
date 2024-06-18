@@ -183,18 +183,18 @@
               <div class="Box-body px-5 pb-5" style="z-index: 1">
                 <article class="markdown-body entry-content container-lg"><h1 id="airplane-tryhackme-walkthrough">Airplane TryHackMe Walkthrough</h1>
 <p><img src="/images/airplane/airplane.png" alt="">
-Such a fun challenge tbh. First add your <em>ip</em> to <em>/etc/hosts</em></p>
-<p>After booting out machine, the first thing is to perform enumeration. I first scanned with nmap and got some interesting results:
-<img src="/images/airplane/airplanescan.png" alt="">
-Port 22 -&gt; Just ssh. We wouldn&rsquo;t get to this first
-Port 6048 -&gt; NOTHING running! This left me confused
+Such a fun challenge. First add your ip to /etc/hosts</p>
+<p>After booting up the box, the first thing is to perform enumeration. I first scanned with nmap and got some interesting results:
+<img src="/images/airplane/airplanescan.png" alt=""><br>
+Port 22 -&gt; Just ssh. We wouldn&rsquo;t get to this first<br>
+Port 6048 -&gt; NOTHING running! This left me confused<br>
 Port 8000 -&gt; http running. Interesting! I navigated to the website</p>
 <p><img src="/images/airplane/airplaneport8000.png" alt="">
-Just an html site. I viewed page source if any hints, none. Checked if <em>robots.txt</em> exist, it doesn&rsquo;t.<br>
+Just an html site. I viewed page source if any hints, none. Checked if <em>robots.txt</em> exists, it doesn&rsquo;t.<br>
 The next thing I always do is run directoty scanners to find interesting pages, but none
 <img src="/images/airplane/airplanedirsearch.png" alt=""><br>
 Dirb gave nothing too :( <br>
-After been stuck for sometime, I looked at the url and suspected it could be vulnerable to path traversal due to its structure /?page=<br>
+After being stuck for sometime, I looked at the url and suspected it could be vulnerable to path traversal due to its structure /?page=<br>
 I tried the obvious attack payload ../../../../../etc/passwd and lol
 <img src="/images/airplane/airplanepasswdfile.png" alt=""></p>
 <p>Going through the passwd file, we find 2 users, carlos and hudson</p>
@@ -301,9 +301,7 @@ On your machine, generate ssh keys by:</p>
       </svg>
     </a>
     <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
-      
       <li class="mr-3 mr-lg-0">Contact me on <a href='https://www.linkedin.com/in/peter-wambua/'>LinkedIn</a></li>
-      
     </ul>
   </div>
   <div class="d-flex flex-justify-center pb-6">

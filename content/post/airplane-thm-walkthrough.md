@@ -7,20 +7,20 @@ summary = 'A walkthrough of a medium room in TryHackMe. A great room needing cri
 # Airplane TryHackMe Walkthrough
 
 ![](/images/airplane/airplane.png)
-Such a fun challenge tbh. First add your *ip* to */etc/hosts*
+Such a fun challenge. First add your ip to /etc/hosts
 
-After booting out machine, the first thing is to perform enumeration. I first scanned with nmap and got some interesting results:
-![](/images/airplane/airplanescan.png)
-Port 22 -> Just ssh. We wouldn't get to this first
-Port 6048 -> NOTHING running! This left me confused
+After booting up the box, the first thing is to perform enumeration. I first scanned with nmap and got some interesting results:
+![](/images/airplane/airplanescan.png)\
+Port 22 -> Just ssh. We wouldn't get to this first\
+Port 6048 -> NOTHING running! This left me confused\
 Port 8000 -> http running. Interesting! I navigated to the website
 
 ![](/images/airplane/airplaneport8000.png)
-Just an html site. I viewed page source if any hints, none. Checked if *robots.txt* exist, it doesn't.\
+Just an html site. I viewed page source if any hints, none. Checked if *robots.txt* exists, it doesn't.\
 The next thing I always do is run directoty scanners to find interesting pages, but none
 ![](/images/airplane/airplanedirsearch.png)\
 Dirb gave nothing too :( \
-After been stuck for sometime, I looked at the url and suspected it could be vulnerable to path traversal due to its structure /?page=\
+After being stuck for sometime, I looked at the url and suspected it could be vulnerable to path traversal due to its structure /?page=\
 I tried the obvious attack payload ../../../../../etc/passwd and lol
 ![](/images/airplane/airplanepasswdfile.png)
 
