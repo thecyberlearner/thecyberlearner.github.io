@@ -3,11 +3,10 @@ languageCode = "en-us"
 title = "Peter Wambua's blog"
 theme = "github-style"
 
-[author]
-  name = "Peter Wambua"
-  homepage = "https://github.com/wambuapeter/"
 
 [params]
+	author = "Peter Wambua"
+	description = "Cyber Security Engineer. Red Teamer. CTF Player @CyberK1math1. Dev"
 	avatar = "/images/profile.png"
 	url = "https://wambuapeter.github.io"
 	twitter = "th3cyberlearner"
