@@ -18,7 +18,7 @@ Decoding it, we get the flag
 Proceeding, we find a page that tells us to explore the hidden secrets. I don't know about you but I first think of viewing the page source for comments after hearing this.
 ![](/images/thesecretsanctum/thesecretsanctumrobotssecret.png)
 
-The comments say that there is always a place they don't want you to find. There is a page in web applications called robots.txt that states pages that they don't want indexed. Visiting it:
+The comments say that there is always a place they don't want you to find. There is a page in web applications called robots.txt that states pages that they don't want indexed. Visiting it:\
 ![](/images/thesecretsanctum/thesecretsanctumrobots.png)
 
 So we visit the page /batcave.php. We are presented with a login page.
