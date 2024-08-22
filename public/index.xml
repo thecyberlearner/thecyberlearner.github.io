@@ -6,8 +6,15 @@
     <description>Recent content on Peter Wambua&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 Jul 2024 05:52:25 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 22 Aug 2024 04:29:09 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>jscalc HackTheBox</title>
+      <link>http://localhost:1313/post/jscalc-htb/</link>
+      <pubDate>Thu, 22 Aug 2024 04:29:09 -0400</pubDate>
+      <guid>http://localhost:1313/post/jscalc-htb/</guid>
+      <description>HTB web challenge jscalc walkthrough</description>
+    </item>
     <item>
       <title>The Secret Sanctum Walkthrough</title>
       <link>http://localhost:1313/post/the-secret-sanctum-walkthrough/</link>
