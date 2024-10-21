@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Peter Wambua&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Aug 2024 04:29:09 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 21 Oct 2024 15:56:07 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Himaya</title>
+      <link>http://localhost:1313/post/himaya/</link>
+      <pubDate>Mon, 21 Oct 2024 15:56:07 -0400</pubDate>
+      <guid>http://localhost:1313/post/himaya/</guid>
+      <description>Himaya We are the Hushed Protector of Hospital Data&#xA;The logo </description>
+    </item>
     <item>
       <title>jscalc HackTheBox</title>
       <link>http://localhost:1313/post/jscalc-htb/</link>
