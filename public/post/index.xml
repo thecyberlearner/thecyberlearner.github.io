@@ -4,10 +4,17 @@
     <title>Posts on Peter Wambua&#39;s blog</title>
     <link>http://localhost:1313/post/</link>
     <description>Recent content in Posts on Peter Wambua&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Oct 2024 15:56:07 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 24 Jun 2025 04:38:29 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tjctf2025</title>
+      <link>http://localhost:1313/post/tjctf2025/</link>
+      <pubDate>Tue, 24 Jun 2025 04:38:29 -0400</pubDate>
+      <guid>http://localhost:1313/post/tjctf2025/</guid>
+      <description>TJCTF Web Challenges This is a walkthrough of some interesting web challenges that I tackled the TJCTF 2025 together with my team, fr334aks-mini&#xA;Loopy Can you access the admin page? Running on port 5000&#xA;For this challenge, we are given a website that shows other website HTML content previews. Trying https://thecyberlearner.github.io: We are told to access the admin site on port 5000, so I definitely knew I&amp;rsquo;m dealing with an SSRF.</description>
+    </item>
     <item>
       <title>Himaya</title>
       <link>http://localhost:1313/post/himaya/</link>
