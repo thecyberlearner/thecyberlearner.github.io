@@ -156,4 +156,4 @@ Visiting the /business_secrets page we get the flag
 
 Flag: tjctf{buy_h1gh_s3l1_l0w}
 
-		> 2 more challenges otw...
+		> Learned!
