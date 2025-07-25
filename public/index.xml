@@ -6,8 +6,22 @@
     <description>Recent content on Peter Wambua&#39;s blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 14 Jul 2025 16:04:10 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 25 Jul 2025 02:49:05 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NeuroSync-D Sherlocks</title>
+      <link>http://localhost:1313/post/neurosync-d/</link>
+      <pubDate>Fri, 25 Jul 2025 02:49:05 -0400</pubDate>
+      <guid>http://localhost:1313/post/neurosync-d/</guid>
+      <description>NeuroSync-D Sherlocks Challenge This is a write-up about the challenge NeuroSync-D, which is part of the Sherlocks challenges in HackTheBox focused on improving learners&amp;rsquo; proficiency in blue team security. As a web pentester, I honestly love investigating web attacks. Feels just like home, and this challenge was no different&#xA;Description: NeuroSync™ is a leading suite of products focusing on developing cutting edge medical BCI devices, designed by the Korosaki Coorporaton. Recently, an APT group targeted them and was able to infiltrate their infrastructure and is now moving laterally to compromise more systems.</description>
+    </item>
+    <item>
+      <title>Phantom Check</title>
+      <link>http://localhost:1313/post/phantom-check/</link>
+      <pubDate>Wed, 23 Jul 2025 02:48:10 -0400</pubDate>
+      <guid>http://localhost:1313/post/phantom-check/</guid>
+      <description>Phantom Check Sherlocks Challenge This is a write-up about a challenge I did a while back, Phantom Check which is part of the Sherlocks challenges in HackTheBox. It tests your knowledge in investigating WMI logs. WMI is the infrastructure for management data and operations on Windows-based operating systems&#xA;Description: Talion suspects that the threat actor carried out anti-virtualization checks to avoid detection in sandboxed environments. Your task is to analyze the event logs and identify the specific techniques used for virtualization detection.</description>
+    </item>
     <item>
       <title>Building Your Own Soc Lab</title>
       <link>http://localhost:1313/post/building-your-own-soc-lab/</link>

